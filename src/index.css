@@ -142,10 +142,147 @@ p {
   font-size: 0.8rem;
 }
 
+/*  ----------  Header ----------*/
+
+header{
+  display: flex;
+  justify-content: flex-end;
+}
+
+/*  ------ Main ----- */
+
+.cart {
+  width: 80%;
+  margin: 5rem auto;
+}
+
+.cart-item {
+  width: 100%;
+  height: 10rem;
+  /*box-shadow: 0 20px 25px -5px rgba(0 0 0 / .10),*/
+  /*            0 10px 10px -5px rgba(0 0 0 / 0.04);*/
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  direction: rtl;
+  margin: 1rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 
+.product-img-container {
+  position: relative;
+  width: 5rem;
+  height: 5rem;
+  margin: 0 auto;
+}
+
+.product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cart-detail {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.cart-detail h4 {
+  color: rgba(0 0 0 / 0.5);
+}
+
+.cart-detail p {
+  color: darkmagenta;
+}
+
+.amount-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+  height: 6rem;
+}
+
+.amount-buttons button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: var(--clr-primary);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.amount-buttons button:active {
+  transform: scale(0.96);
+}
+
+.amount-buttons p {
+  margin: auto;
+  font-size: 1rem;
+  color: darkmagenta;
+}
+
+.trash-btn {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 1rem;
+  color: var(--clr-red-light);
+  cursor: pointer;
+  animation: 2s all ease-in-out;
+}
+
+.trash-btn:active {
+  transform: scale(0.96);
+  color: var(--clr-red-dark);
+}
 
 
+/*  ----- Footer ------ */
++
+.line {
+  width: 100%;
+  height: 0.2rem;
+  background-color: var(--clr-primary-dark);
+  border-radius: 0.5rem;
+}
 
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.footer-total {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2rem auto 1rem;
+  direction: rtl;
+}
+
+.btn-footer {
+  border: none;
+  outline: none;
+  font: inherit;
+  margin: auto;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  background-color: var(--clr-primary);
+  color: var(--clr-white);
+  box-shadow: 0 3px 0 var(--clr-primary-dark);
+  cursor: pointer;
+  animation: 1s all ease-in-out;
+}
+
+.btn-footer:active {
+  box-shadow: 0 0 0 var(--clr-primary-dark);
+  transform: translateY(3px);
+}
 
 
