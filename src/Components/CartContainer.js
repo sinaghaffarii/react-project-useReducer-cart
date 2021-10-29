@@ -1,9 +1,21 @@
 import React from 'react'
 import CartItem from './CartItem'
-import cart from './data'
+import { useGlobalContext } from "./Context";
 
 const CartContainer = () => {
 
+  const { cart } = useGlobalContext()
+  if(cart.length === 0) {
+    return(
+      <section className="cart">
+      {/*  cart header */}
+        <header>
+          <h2>سبد خرید</h2>
+          <h4 className="empty-cart">هیچ محصولی در سبد خرید موجود نمی باشد</h4>
+        </header>
+      </section>
+    )
+  }
 
   return(
     <section className="cart">
