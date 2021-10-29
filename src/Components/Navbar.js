@@ -1,9 +1,10 @@
 import React from 'react'
 import { BsCart2 } from 'react-icons/bs'
-
+import {useGlobalContext} from "./Context";
 
 
 const Navbar = () => {
+  const {amount} = useGlobalContext()
   return(
     <div className="navbar">
       <div className="navbar-items">
@@ -14,7 +15,7 @@ const Navbar = () => {
 
           </div>
           <div className="amount-container">
-            <p className="total-amount">8</p>
+            <p className="total-amount">{amount}</p>
           </div>
         </div>
 

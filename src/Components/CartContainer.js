@@ -4,15 +4,13 @@ import { useGlobalContext } from "./Context";
 
 const CartContainer = () => {
 
-  const { cart } = useGlobalContext()
+  const { cart, total, clearCart } = useGlobalContext()
   if(cart.length === 0) {
     return(
-      <section className="cart">
+      <section className="empty-cart">
       {/*  cart header */}
-        <header>
           <h2>سبد خرید</h2>
-          <h4 className="empty-cart">هیچ محصولی در سبد خرید موجود نمی باشد</h4>
-        </header>
+          <h4>هیچ محصولی در سبد خرید موجود نمی باشد</h4>
       </section>
     )
   }
@@ -34,9 +32,9 @@ const CartContainer = () => {
       <footer>
         <div className="footer-total">
           <p>جمع کل</p>
-          <p> ۲۰۰۰۰۰ تومان</p>
+          <p> {total} تومان</p>
         </div>
-        <button className="btn-footer">حذف همه</button>
+        <button className="btn-footer" onClick={clearCart}>حذف همه</button>
       </footer>
     </section>
   )

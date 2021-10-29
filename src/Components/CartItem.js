@@ -1,9 +1,12 @@
 import React from 'react';
 import {FaRegTrashAlt} from 'react-icons/fa'
-import AmountButton from './AmountButton'
+// import AmountButton from './AmountButton'
+import {useGlobalContext} from "./Context";
+import {IoIosArrowDropdownCircle, IoIosArrowDropupCircle} from "react-icons/io";
 
-const CartItem = ({title , img , price , amount }) => {
+const CartItem = ({id, title , img , price , amount }) => {
 
+  const {remove, increase, decrease} = useGlobalContext();
 
   return(
     <div className="cart-item">
@@ -13,9 +16,13 @@ const CartItem = ({title , img , price , amount }) => {
         <div className="cart-detail">
           <h4>{title}</h4>
           <p>{price} تومان</p>
-          <button className="trash-btn"><FaRegTrashAlt/></button>
+          <button onClick={() => remove(id)} className="trash-btn"><FaRegTrashAlt/></button>
         </div>
-        <AmountButton/>
+      <div className="amount-buttons">
+        <button onClick={() => increase(id)}><IoIosArrowDropupCircle/></button>
+        <p>{amount}</p>
+        <button onClick={() => decrease(id)}><IoIosArrowDropdownCircle/></button>
+      </div>
     </div>
   )
 }

@@ -1,16 +1,51 @@
-import React, { useState , useContext} from 'react'
+import React, { useState , useContext, useReducer} from 'react'
 import cartItems from './data'
+import reducer from './Reducer'
 
 const AppContext = React.createContext();
 
+const initialState = {
+  loading: false,
+  cart: cartItems,
+  total: 0,
+  amount: 0
+}
+
 
 const AppProvider = ({children}) => {
-  const [cart, setCart] = useState(cartItems)
+  // ----- with Context
+  // const [cart, setCart] = useState(cartItems)
 
-    return(
+  // ------ with useReducer
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  // ----- for clear all
+  const clearCart = () => {
+    dispatch({type: 'CLEAR_CART'})
+  }
+
+  // ---- for clear one product
+  const remove = (id) => {
+    dispatch({type: 'REMOVE', payload: id})
+  }
+
+  // ---- Increase amount Product
+  const increase = (id) => {
+    dispatch({type: 'INCREASE', payload: id})
+  }
+  // ---- Decrease amount Product
+  const decrease = (id) => {
+    dispatch({type: 'DECREASE', payload: id})
+  }
+
+  return(
       <AppContext.Provider
       value={{
-        cart
+        ...state,
+        clearCart,
+        remove,
+        increase,
+        decrease
       }}
       >
         {children}
