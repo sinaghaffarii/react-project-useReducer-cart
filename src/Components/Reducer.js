@@ -43,6 +43,11 @@ const reducer = (state, action) => {
       // -------- fix 2 digits then dot amount
       total = parseFloat(total.toFixed(2))
       return {...state,amount, total}
+
+    case 'LOADING':
+      return {...state, loading: true}
+    case 'DISPLAY_ITEMS':
+      return {...state, loading: false, cart: action.payload}
       }
 
 

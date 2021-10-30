@@ -4,6 +4,8 @@ import reducer from './Reducer'
 
 const AppContext = React.createContext();
 
+const url = 'https://course-api.com/react-useReducer-cart-project'
+
 const initialState = {
   loading: false,
   cart: cartItems,
@@ -37,6 +39,17 @@ const AppProvider = ({children}) => {
   const decrease = (id) => {
     dispatch({type: 'DECREASE', payload: id})
   }
+
+  const fetchData = async () => {
+    dispatch({ type: 'LOADING' })
+    const response = await fetch(url)
+    const cart = await response.json()
+    dispatch({ type: 'DISPLAY_ITEMS', payload: cart })
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
 
   useEffect(() => {
     dispatch({type: 'GET_TOTALS'})
