@@ -6,7 +6,7 @@ import {IoIosArrowDropdownCircle, IoIosArrowDropupCircle} from "react-icons/io";
 
 const CartItem = ({id, title , img , price , amount }) => {
 
-  const {remove, increase, decrease} = useGlobalContext();
+  const {remove, increase, decrease, toggleAmount} = useGlobalContext();
 
   return(
     <div className="cart-item">
@@ -19,9 +19,13 @@ const CartItem = ({id, title , img , price , amount }) => {
           <button onClick={() => remove(id)} className="trash-btn"><FaRegTrashAlt/></button>
         </div>
       <div className="amount-buttons">
-        <button onClick={() => increase(id)}><IoIosArrowDropupCircle/></button>
+        {/*<button onClick={() => increase(id)}><IoIosArrowDropupCircle/></button>*/}
+        <button onClick={() => toggleAmount(id, 'inc')}><IoIosArrowDropupCircle/></button>
+
         <p>{amount}</p>
-        <button onClick={() => decrease(id)}><IoIosArrowDropdownCircle/></button>
+        {/*<button onClick={() => decrease(id)}><IoIosArrowDropdownCircle/></button>*/}
+        <button onClick={() => toggleAmount(id, 'dec')}><IoIosArrowDropdownCircle/></button>
+
       </div>
     </div>
   )
