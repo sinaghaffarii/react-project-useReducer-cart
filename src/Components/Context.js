@@ -1,4 +1,4 @@
-import React, { useState , useContext, useReducer} from 'react'
+import React, { useContext, useReducer, useEffect} from 'react'
 import cartItems from './data'
 import reducer from './Reducer'
 
@@ -37,6 +37,10 @@ const AppProvider = ({children}) => {
   const decrease = (id) => {
     dispatch({type: 'DECREASE', payload: id})
   }
+
+  useEffect(() => {
+    dispatch({type: 'GET_TOTALS'})
+  }, [state.cart])
 
   return(
       <AppContext.Provider
